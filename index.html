@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>8th Grade Math - Midterm Review Packet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Caveat:wght@500;700&family=Be+Vietnam+Pro:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <style>
+        body { font-family: 'Be Vietnam Pro', sans-serif; }
+        .font-title { font-family: 'Amatic SC', cursive; }
+        .font-hand { font-family: 'Caveat', cursive; }
+        .nav-active { border-bottom: 4px solid #b4271d; color: #b4271d; }
+        .math-box { background: repeating-linear-gradient(transparent, transparent 24px, #e5e7eb 24px, #e5e7eb 25px); line-height: 25px; }
+        .chip { display:inline-block; padding:0.35rem 0.75rem; border-radius:9999px; font-weight:700; font-size:0.9rem; }
+        .fade-card { transition: all 0.2s ease; }
+        .fade-card:hover { transform: translateY(-2px); }
+        .answer-hide { display:none; }
+        .term-card p:last-child { margin-top: 0.35rem; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:20px_20px] min-h-screen flex flex-col">
+
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 flex justify-between items-center h-20">
+            <div class="text-3xl font-title font-bold text-slate-800">Mr Appels Review Packet</div>
+            <div class="flex gap-4 md:gap-8 font-bold text-sm md:text-lg text-slate-500 overflow-x-auto">
+                <button onclick="showSection('home')" id="nav-home" class="nav-active hover:text-red-700 transition-colors py-2 whitespace-nowrap">Dashboard</button>
+                <button onclick="showSection('knowledge')" id="nav-knowledge" class="hover:text-red-700 transition-colors py-2 whitespace-nowrap">Master Study Guide</button>
+                <button onclick="showSection('practice')" id="nav-practice" class="hover:text-red-700 transition-colors py-2 whitespace-nowrap">Interactive Quiz</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow p-4 md:p-8 max-w-6xl mx-auto w-full">
+
+        <section id="sec-home" class="block animate-fade-in mt-8">
+            <div class="text-center mb-16 relative">
+                <div class="absolute -top-6 left-1/2 -translate-x-1/2 w-32 h-32 bg-yellow-200/50 rounded-full blur-2xl"></div>
+                <h1 class="font-title text-6xl md:text-8xl font-bold text-red-700 mb-4 transform -rotate-1 relative z-10">Midterm Review Packet</h1>
+                <p class="font-hand text-3xl md:text-4xl text-green-800 relative z-10">Standard 8.F.A.1 – 8.F.B.5 & The Tiny Home Project</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-10">
+                <div onclick="showSection('knowledge')" class="cursor-pointer bg-white rounded-[255px_15px_225px_15px/15px_225px_15px_255px] p-8 shadow-sm border-2 border-slate-300 hover:border-blue-500 transition-all transform hover:-translate-y-2">
+                    <span class="material-symbols-outlined text-6xl text-blue-600 mb-4 block">menu_book</span>
+                    <h2 class="font-title text-5xl font-bold mb-2">1. The Knowledge Base</h2>
+                    <p class="text-slate-600 text-lg">Definitions, EAL vocabulary, function notation, slope, intercepts, comparing representations, real-life stories, graph reading, and tiny-home scale links all in one place.</p>
+                </div>
+
+                <div onclick="showSection('practice')" class="cursor-pointer bg-white rounded-[15px_225px_15px_255px/255px_15px_225px_15px] p-8 shadow-sm border-2 border-slate-300 hover:border-red-500 transition-all transform hover:-translate-y-2">
+                    <span class="material-symbols-outlined text-6xl text-red-600 mb-4 block">query_stats</span>
+                    <h2 class="font-title text-5xl font-bold mb-2">2. Interactive Quiz</h2>
+                    <p class="text-slate-600 text-lg">Use many linear stories. Fill tables, see the graph grow, then answer extra questions about slope, y-intercept, predictions, and comparisons.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
+                <div class="bg-white border-2 border-slate-200 rounded-xl p-5 text-center fade-card">
+                    <p class="font-title text-4xl text-blue-700">8.F.A.1</p>
+                    <p class="font-bold">Function or not?</p>
+                    <p class="text-sm text-slate-600">Tables, graphs, mappings, ordered pairs</p>
+                </div>
+                <div class="bg-white border-2 border-slate-200 rounded-xl p-5 text-center fade-card">
+                    <p class="font-title text-4xl text-green-700">8.F.A.2–3</p>
+                    <p class="font-bold">Compare and classify</p>
+                    <p class="text-sm text-slate-600">Slope, intercept, linear vs. non-linear</p>
+                </div>
+                <div class="bg-white border-2 border-slate-200 rounded-xl p-5 text-center fade-card">
+                    <p class="font-title text-4xl text-orange-700">8.F.B.4</p>
+                    <p class="font-bold">Model from stories</p>
+                    <p class="text-sm text-slate-600">Rule, table, graph, meaning</p>
+                </div>
+                <div class="bg-white border-2 border-slate-200 rounded-xl p-5 text-center fade-card">
+                    <p class="font-title text-4xl text-purple-700">8.F.B.5</p>
+                    <p class="font-bold">Read graphs like stories</p>
+                    <p class="text-sm text-slate-600">Increasing, decreasing, flat, turning</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="sec-knowledge" class="hidden animate-fade-in">
+            <h2 class="font-title text-7xl font-bold text-slate-800 mb-8 border-b-4 border-red-700 pb-4 inline-block">The Master Study Guide</h2>
+
+            <div class="space-y-12">
+
+                <div class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border-2 border-slate-200 relative">
+                    <div class="absolute -top-4 -right-4 w-16 h-16 bg-yellow-300/30 rounded-full blur-xl"></div>
+                    <h3 class="font-title text-5xl font-bold mb-6 text-blue-700 flex items-center gap-3"><span class="material-symbols-outlined text-4xl">functions</span> Ch 1: What is a Function? (8.F.A.1)</h3>
+                    <p class="text-xl mb-6 bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">A <strong>relation</strong> is any set of input-output pairs. A <strong>function</strong> is a special relation where <strong>each input has exactly one output</strong>. The x-value cannot repeat with different y-values. The y-value may repeat.</p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <div class="bg-slate-50 p-5 rounded-xl border term-card">
+                            <p class="font-bold text-lg text-green-700">Domain (定义域) / Input (输入)</p>
+                            <p>All possible x-values. These are the numbers you put in.</p>
+                        </div>
+                        <div class="bg-slate-50 p-5 rounded-xl border term-card">
+                            <p class="font-bold text-lg text-purple-700">Range (值域) / Output (输出)</p>
+                            <p>All possible y-values. These are the results that come out.</p>
+                        </div>
+                        <div class="bg-slate-50 p-5 rounded-xl border term-card">
+                            <p class="font-bold text-lg text-amber-700">Independent Variable (自变量)</p>
+                            <p>The input. It stands alone. It does not depend on the other variable.</p>
+                        </div>
+                        <div class="bg-slate-50 p-5 rounded-xl border term-card">
+                            <p class="font-bold text-lg text-rose-700">Dependent Variable (因变量)</p>
+                            <p>The output. It depends on the input value.</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                        <div class="bg-green-50 border border-green-200 rounded-xl p-5">
+                            <h4 class="font-bold text-2xl mb-3 text-green-800">Function test</h4>
+                            <ul class="space-y-2 text-lg">
+                                <li>• Same x cannot point to two y-values.</li>
+                                <li>• Mapping: one arrow out of each input.</li>
+                                <li>• Graph: passes the vertical line test.</li>
+                                <li>• Table: x-values are unique.</li>
+                            </ul>
+                        </div>
+                        <div class="bg-red-50 border border-red-200 rounded-xl p-5">
+                            <h4 class="font-bold text-2xl mb-3 text-red-800">Not a function</h4>
+                            <ul class="space-y-2 text-lg">
+                                <li>• Input 2 gives y = 3 and y = 6.</li>
+                                <li>• Mapping has one input with two arrows.</li>
+                                <li>• Vertical line touches graph twice.</li>
+                                <li>• Table repeats x with different y.</li>
+                            </ul>
+                        </div>
+                        <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-5">
+                            <h4 class="font-bold text-2xl mb-3 text-yellow-800">EAL sentence frame</h4>
+                            <p class="text-lg">“This relation <strong>is / is not</strong> a function because the x-value(s) <strong>do / do not</strong> repeat.”</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="math-box p-6 bg-yellow-50 rounded border border-yellow-200 font-hand text-2xl text-slate-700">
+                            <p class="font-bold text-slate-800">Worked Example A</p>
+                            <p>{(0,1), (1,3), (2,5), (3,7)}</p>
+                            <p class="text-green-700">All x-values are different.</p>
+                            <p class="font-bold text-3xl mt-2">Function</p>
+                        </div>
+                        <div class="math-box p-6 bg-yellow-50 rounded border border-yellow-200 font-hand text-2xl text-slate-700">
+                            <p class="font-bold text-slate-800">Worked Example B</p>
+                            <p>{(0,1), (2,4), (2,6), (5,7)}</p>
+                            <p class="text-red-700">x = 2 repeats with two outputs.</p>
+                            <p class="font-bold text-3xl mt-2">Not a Function</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border-2 border-slate-200">
+                    <h3 class="font-title text-5xl font-bold mb-6 text-indigo-700 flex items-center gap-3"><span class="material-symbols-outlined text-4xl">calculate</span> Ch 2: Evaluate Functions and Function Notation</h3>
+                    <p class="text-xl mb-6">Function notation is a short way to name a rule. <code class="font-bold">f(x)</code> means “the output when the input is x.” To evaluate, substitute the input and simplify.</p>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                        <div class="bg-slate-800 text-green-400 p-6 rounded-lg font-mono text-lg shadow-inner">
+                            <p class="text-slate-300 mb-2">Example 1: Evaluate f(x) = x - 7 when x = 5</p>
+                            <p>f(5) = 5 - 7</p>
+                            <p class="text-white font-bold">f(5) = -2</p>
+                            <p class="mt-6 text-slate-300 mb-2">Example 2: Evaluate g(h) = h² - 1 when h = -3</p>
+                            <p>g(-3) = (-3)² - 1</p>
+                            <p>g(-3) = 9 - 1</p>
+                            <p class="text-white font-bold">g(-3) = 8</p>
+                        </div>
+                        <div class="bg-slate-800 text-green-400 p-6 rounded-lg font-mono text-lg shadow-inner">
+                            <p class="text-slate-300 mb-2">Example 3: If j(x) = (2x - 5) / 7, find x when j(x) = -3</p>
+                            <p>-3 = (2x - 5) / 7</p>
+                            <p>-21 = 2x - 5</p>
+                            <p>-16 = 2x</p>
+                            <p class="text-white font-bold">x = -8</p>
+                            <p class="mt-6 text-slate-300 mb-2">EAL tip</p>
+                            <p><span class="text-white">Input</span> goes inside the brackets.</p>
+                            <p><span class="text-white">Output</span> is the value after you calculate.</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-indigo-50 border border-indigo-200 p-5 rounded-xl"><p class="font-bold">Quick check</p><p>f(x)=3x+1, find f(2).</p><p class="mt-2 text-indigo-700 font-bold">Answer: 7</p></div>
+                        <div class="bg-indigo-50 border border-indigo-200 p-5 rounded-xl"><p class="font-bold">Quick check</p><p>g(x)=x+3 and g(x)=10. Find x.</p><p class="mt-2 text-indigo-700 font-bold">Answer: 7</p></div>
+                        <div class="bg-indigo-50 border border-indigo-200 p-5 rounded-xl"><p class="font-bold">Quick check</p><p>h(a)=a²-5 and h(a)=11. Find a.</p><p class="mt-2 text-indigo-700 font-bold">Answer: 4 or -4</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border-2 border-slate-200">
+                    <h3 class="font-title text-5xl font-bold mb-6 text-orange-600 flex items-center gap-3"><span class="material-symbols-outlined text-4xl">compare_arrows</span> Ch 3: Compare Functions in Different Forms (8.F.A.2)</h3>
+                    <p class="text-xl mb-6">You may compare a graph, a table, an equation, or a verbal rule. The two big ideas are <strong>slope / rate of change</strong> and <strong>y-intercept / initial value</strong>.</p>
+
+                    <div class="bg-orange-50 p-6 border border-orange-200 rounded-xl mb-8">
+                        <h4 class="text-3xl font-bold mb-4 font-title text-orange-900">Vacation: The Beach House Rental</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                            <div class="bg-white p-5 rounded shadow-sm">
+                                <h5 class="font-bold text-xl mb-2">House 1: Shore Thing</h5>
+                                <p class="text-lg">Graph starts at 200 and rises by 200 each night.</p>
+                                <p class="font-mono bg-slate-100 p-3 rounded mt-3">m = 200<br>b = 200</p>
+                            </div>
+                            <div class="bg-white p-5 rounded shadow-sm">
+                                <h5 class="font-bold text-xl mb-2">House 2: Beachy Keen</h5>
+                                <p class="text-lg">Equation: <code>y = 100 + 249x</code></p>
+                                <p class="font-mono bg-slate-100 p-3 rounded mt-3">m = 249<br>b = 100</p>
+                            </div>
+                            <div class="bg-white p-5 rounded shadow-sm">
+                                <h5 class="font-bold text-xl mb-2">House 3: Seas the Day</h5>
+                                <p class="text-lg">Table starts at 115 and adds 230 each night.</p>
+                                <p class="font-mono bg-slate-100 p-3 rounded mt-3">m = 230<br>b = 115</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
+                            <div class="bg-white rounded-lg p-4 border"><strong>Highest nightly rate:</strong> Beachy Keen (249)</div>
+                            <div class="bg-white rounded-lg p-4 border"><strong>Highest deposit:</strong> Shore Thing (200)</div>
+                            <div class="bg-white rounded-lg p-4 border"><strong>Lowest nightly rate:</strong> Shore Thing (200)</div>
+                            <div class="bg-white rounded-lg p-4 border"><strong>Lowest deposit:</strong> Beachy Keen (100)</div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="border rounded-xl p-5 bg-slate-50">
+                            <h4 class="font-bold text-2xl mb-3">Comparison steps</h4>
+                            <ol class="space-y-2 text-lg list-decimal list-inside">
+                                <li>Find the slope of each function.</li>
+                                <li>Find the y-intercept of each function.</li>
+                                <li>Compare which grows faster.</li>
+                                <li>Compare which starts higher.</li>
+                                <li>Use the context words: starts, costs, grows, loses, travels.</li>
+                            </ol>
+                        </div>
+                        <div class="border rounded-xl p-5 bg-slate-50">
+                            <h4 class="font-bold text-2xl mb-3">Worked compare task</h4>
+                            <p class="text-lg">Function A: table 0→4, 1→6, 2→8, 3→10</p>
+                            <p class="text-lg">Function B: equation <code>y = x + 2</code></p>
+                            <p class="mt-3 text-lg"><strong>Slope A:</strong> 2</p>
+                            <p class="text-lg"><strong>Slope B:</strong> 1</p>
+                            <p class="text-lg"><strong>Greater slope:</strong> Function A</p>
+                            <p class="text-lg"><strong>Greater y-intercept:</strong> Function A, because 4 > 2</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border-2 border-slate-200">
+                    <h3 class="font-title text-5xl font-bold mb-6 text-green-700 flex items-center gap-3"><span class="material-symbols-outlined text-4xl">gesture</span> Ch 4: Linear vs. Non-Linear (8.F.A.3)</h3>
+                    <p class="text-xl mb-6">A linear function makes a straight line and has a constant rate of change. A non-linear function does not.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                        <div class="border-2 border-green-200 rounded-xl overflow-hidden">
+                            <div class="bg-green-100 p-4 font-bold text-2xl text-green-900 border-b-2 border-green-200">Linear (直线)</div>
+                            <div class="p-6">
+                                <ul class="space-y-3 text-lg">
+                                    <li><strong>Graph:</strong> straight line</li>
+                                    <li><strong>Equation:</strong> can be written as <code>y = mx + b</code></li>
+                                    <li><strong>Table:</strong> same change in y every time</li>
+                                    <li><strong>Examples:</strong> <code>y = -x</code>, <code>y = 0.5x + 1</code></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="border-2 border-purple-200 rounded-xl overflow-hidden">
+                            <div class="bg-purple-100 p-4 font-bold text-2xl text-purple-900 border-b-2 border-purple-200">Non-Linear (非直线)</div>
+                            <div class="p-6">
+                                <ul class="space-y-3 text-lg">
+                                    <li><strong>Graph:</strong> curve or changing direction</li>
+                                    <li><strong>Equation:</strong> may have powers like <code>x²</code> or <code>x³</code>, or variable in denominator</li>
+                                    <li><strong>Table:</strong> changes in y are not constant</li>
+                                    <li><strong>Examples:</strong> <code>A = s²</code>, <code>y = 10/x</code></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                        <div class="bg-blue-50 border border-blue-200 p-5 rounded-xl"><p class="font-bold text-xl mb-2">Myth 1</p><p>If an equation has x and y, it is linear.</p><p class="mt-2 text-blue-700 font-bold">False</p></div>
+                        <div class="bg-blue-50 border border-blue-200 p-5 rounded-xl"><p class="font-bold text-xl mb-2">Myth 2</p><p>If a graph goes up, it is linear.</p><p class="mt-2 text-blue-700 font-bold">False</p></div>
+                        <div class="bg-blue-50 border border-blue-200 p-5 rounded-xl"><p class="font-bold text-xl mb-2">Truth</p><p>Use the straight-line test and constant-rate test.</p><p class="mt-2 text-blue-700 font-bold">Always check both.</p></div>
+                    </div>
+
+                    <div class="bg-slate-100 p-6 rounded-lg border-l-4 border-slate-400">
+                        <h4 class="font-bold text-xl mb-2">Speak Like a Mathematician</h4>
+                        <p class="text-lg">“This function is linear because its graph is a straight line and the y-values change by a constant amount.”</p>
+                        <p class="text-lg mt-2">“This function is non-linear because its graph is not a straight line and the rate of change is changing.”</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border-2 border-slate-200">
+                    <h3 class="font-title text-5xl font-bold mb-6 text-rose-700 flex items-center gap-3"><span class="material-symbols-outlined text-4xl">show_chart</span> Ch 5: Slope, Intercepts, and y = mx + b</h3>
+                    <p class="text-xl mb-6">The slope tells how fast the line rises or falls. The y-intercept tells where the graph starts when x = 0.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+                        <div class="bg-white border-2 border-slate-200 rounded-xl p-5"><p class="font-bold text-green-700 text-xl">Positive slope</p><p class="text-lg">Rises left to right</p></div>
+                        <div class="bg-white border-2 border-slate-200 rounded-xl p-5"><p class="font-bold text-red-700 text-xl">Negative slope</p><p class="text-lg">Falls left to right</p></div>
+                        <div class="bg-white border-2 border-slate-200 rounded-xl p-5"><p class="font-bold text-cyan-700 text-xl">Zero slope</p><p class="text-lg">Horizontal line</p></div>
+                        <div class="bg-white border-2 border-slate-200 rounded-xl p-5"><p class="font-bold text-amber-700 text-xl">Undefined slope</p><p class="text-lg">Vertical line</p></div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                        <div class="bg-slate-50 rounded-xl border p-6">
+                            <h4 class="font-bold text-2xl mb-3">Slope from two points</h4>
+                            <p class="text-lg mb-2"><code>m = (y₂ - y₁) / (x₂ - x₁)</code></p>
+                            <p class="text-lg">Through (2, 5) and (3, 9):</p>
+                            <p class="font-mono text-lg mt-2">m = (9 - 5) / (3 - 2) = 4</p>
+                        </div>
+                        <div class="bg-slate-50 rounded-xl border p-6">
+                            <h4 class="font-bold text-2xl mb-3">Equation form</h4>
+                            <p class="text-lg"><code>y = mx + b</code></p>
+                            <p class="text-lg mt-2">m = slope</p>
+                            <p class="text-lg">b = y-intercept</p>
+                            <p class="text-lg mt-2">Example: <code>y = 3x - 4</code> has slope 3 and y-intercept -4.</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-rose-50 border border-rose-200 p-5 rounded-xl"><p class="font-bold">Graph from equation</p><p>1. Plot the y-intercept.</p><p>2. Use rise/run.</p><p>3. Draw arrows on both ends.</p></div>
+                        <div class="bg-rose-50 border border-rose-200 p-5 rounded-xl"><p class="font-bold">Equation from table</p><p>1. Find constant change.</p><p>2. That is slope.</p><p>3. Use x = 0 row to find b.</p></div>
+                        <div class="bg-rose-50 border border-rose-200 p-5 rounded-xl"><p class="font-bold">Intercept reminder</p><p>x-intercept is where y = 0.</p><p>y-intercept is where x = 0.</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border-2 border-slate-200">
+                    <h3 class="font-title text-5xl font-bold mb-6 text-teal-700 flex items-center gap-3"><span class="material-symbols-outlined text-4xl">edit_note</span> Ch 6: Model Real-Life Situations (8.F.B.4)</h3>
+                    <p class="text-xl mb-6">Turn the story into a rule. Identify the starting amount and the amount that changes each step.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-teal-50 border border-teal-200 rounded-xl p-5"><h4 class="font-bold text-2xl mb-2">Taxi Fare</h4><p class="text-lg">Start at 10 RMB, then +5 RMB per km.</p><p class="font-mono font-bold mt-2">y = 5x + 10</p></div>
+                        <div class="bg-teal-50 border border-teal-200 rounded-xl p-5"><h4 class="font-bold text-2xl mb-2">Swimming Pool</h4><p class="text-lg">Start at 20 kL, then -2 kL per hour.</p><p class="font-mono font-bold mt-2">y = -2x + 20</p></div>
+                        <div class="bg-teal-50 border border-teal-200 rounded-xl p-5"><h4 class="font-bold text-2xl mb-2">Burning Candle</h4><p class="text-lg">Start at 30 cm, halfway after 5 hours means 15 cm at 5 hours.</p><p class="font-mono font-bold mt-2">y = -3x + 30</p></div>
+                        <div class="bg-teal-50 border border-teal-200 rounded-xl p-5"><h4 class="font-bold text-2xl mb-2">Pocket Money</h4><p class="text-lg">Start at -65 RMB, then +15 RMB each week.</p><p class="font-mono font-bold mt-2">y = 15x - 65</p></div>
+                        <div class="bg-teal-50 border border-teal-200 rounded-xl p-5"><h4 class="font-bold text-2xl mb-2">Basement Temperature</h4><p class="text-lg">Start at -6°C, then +2°C each hour.</p><p class="font-mono font-bold mt-2">y = 2x - 6</p></div>
+                        <div class="bg-teal-50 border border-teal-200 rounded-xl p-5"><h4 class="font-bold text-2xl mb-2">Food Account</h4><p class="text-lg">Start with 900 dollars, then -50 dollars each week.</p><p class="font-mono font-bold mt-2">y = -50x + 900</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border-2 border-slate-200">
+                    <h3 class="font-title text-5xl font-bold mb-6 text-purple-700 flex items-center gap-3"><span class="material-symbols-outlined text-4xl">monitoring</span> Ch 7: Read Graphs Like Stories (8.F.B.5)</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="text-2xl font-bold mb-4">Distance vs. Time Language</h4>
+                            <ul class="space-y-3 text-lg">
+                                <li>🏃 <strong>Steeper line</strong> = faster speed</li>
+                                <li>➖ <strong>Flat line</strong> = stopped / resting</li>
+                                <li>📈 <strong>Increasing line</strong> = moving away</li>
+                                <li>📉 <strong>Decreasing line</strong> = coming back / getting closer</li>
+                                <li>↩️ <strong>Turn around</strong> = direction changes</li>
+                                <li>🌀 <strong>Curved graph</strong> = speed changes, not constant</li>
+                            </ul>
+                        </div>
+                        <div class="w-full bg-slate-100 border-2 border-dashed border-slate-400 rounded-xl p-8 text-center transform rotate-2">
+                            <span class="material-symbols-outlined text-6xl text-slate-400 mb-2">timeline</span>
+                            <p class="font-hand text-2xl text-slate-600">Flat horizontal line =<br>time passes, but distance does not change.</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                        <div class="bg-purple-50 border border-purple-200 rounded-xl p-5">
+                            <h4 class="font-bold text-2xl mb-3">Runner story</h4>
+                            <p class="text-lg">Runner 1 starts fastest, stops halfway, and does not finish.</p>
+                            <p class="text-lg">Runner 2 starts slow, speeds up, falls, then sprints to finish first.</p>
+                            <p class="text-lg">Runner 3 is steady and fast, then gets passed at the end.</p>
+                        </div>
+                        <div class="bg-purple-50 border border-purple-200 rounded-xl p-5">
+                            <h4 class="font-bold text-2xl mb-3">Commute graph clues</h4>
+                            <p class="text-lg">One car slows down. One car stops for breakfast. One car turns around and goes back home. Read every segment, not just the first one.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border-2 border-slate-200">
+                    <h3 class="font-title text-5xl font-bold mb-6 text-cyan-700 flex items-center gap-3"><span class="material-symbols-outlined text-4xl">architecture</span> Ch 8: Tiny Home Geometry Link</h3>
+                    <p class="text-xl mb-6">Functions and geometry connect in the Tiny Home project. You used scale drawings, proportional reasoning, and even a linear rule for a ramp on the floor plan.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <div class="bg-cyan-50 border border-cyan-200 rounded-xl p-5">
+                            <h4 class="font-bold text-2xl mb-3">Scale 1:50</h4>
+                            <p class="text-lg">1 cm on the drawing = 50 cm in real life.</p>
+                            <p class="text-lg mt-2">Example: 8 cm on the drawing means 8 × 50 = 400 cm = 4 m in real life.</p>
+                        </div>
+                        <div class="bg-cyan-50 border border-cyan-200 rounded-xl p-5">
+                            <h4 class="font-bold text-2xl mb-3">Ramp rule</h4>
+                            <p class="text-lg">On the drawing, the ramp follows <code>y = 1/2x + 1</code>.</p>
+                            <p class="text-lg mt-2">The slope means the ramp rises 1 cm for every 2 cm across on the drawing.</p>
+                        </div>
+                    </div>
+                    <div class="bg-slate-100 p-6 rounded-lg border-l-4 border-cyan-500">
+                        <p class="text-lg"><strong>Connection sentence:</strong> “Scale changes the size, but the ratio stays the same. A linear rule can describe the top edge of a ramp on a scaled drawing.”</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border-2 border-slate-200">
+                    <h3 class="font-title text-5xl font-bold mb-6 text-slate-800 flex items-center gap-3"><span class="material-symbols-outlined text-4xl">library_books</span> EAL Vocabulary Bank</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-lg">
+                        <div class="bg-slate-50 p-4 rounded border"><strong>function</strong> 函数<br>A rule with one output for each input.</div>
+                        <div class="bg-slate-50 p-4 rounded border"><strong>relation</strong> 关系<br>Any set of input-output pairs.</div>
+                        <div class="bg-slate-50 p-4 rounded border"><strong>domain</strong> 定义域<br>All x-values or inputs.</div>
+                        <div class="bg-slate-50 p-4 rounded border"><strong>range</strong> 值域<br>All y-values or outputs.</div>
+                        <div class="bg-slate-50 p-4 rounded border"><strong>slope</strong> 斜率<br>How fast the line rises or falls.</div>
+                        <div class="bg-slate-50 p-4 rounded border"><strong>rate of change</strong> 变化率<br>How much y changes when x changes by 1.</div>
+                        <div class="bg-slate-50 p-4 rounded border"><strong>y-intercept</strong> 纵截距<br>Where the graph crosses the y-axis.</div>
+                        <div class="bg-slate-50 p-4 rounded border"><strong>x-intercept</strong> 横截距<br>Where the graph crosses the x-axis.</div>
+                        <div class="bg-slate-50 p-4 rounded border"><strong>linear</strong> 线性<br>Straight line, constant rate.</div>
+                        <div class="bg-slate-50 p-4 rounded border"><strong>non-linear</strong> 非线性<br>Not a straight line.</div>
+                        <div class="bg-slate-50 p-4 rounded border"><strong>increasing</strong> 增加<br>Going up as x increases.</div>
+                        <div class="bg-slate-50 p-4 rounded border"><strong>decreasing</strong> 减少<br>Going down as x increases.</div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="sec-practice" class="hidden animate-fade-in">
+            <div class="flex flex-col md:flex-row justify-between items-center md:items-end mb-8 border-b-4 border-red-700 pb-4">
+                <div>
+                    <h2 class="font-title text-7xl font-bold text-slate-800 mb-2">Interactive Quiz Engine</h2>
+                    <p class="text-xl text-slate-600">Apply equations to fill the tables. Watch the graph build. Then answer extra test questions.</p>
+                </div>
+                <button onclick="nextQuestion()" class="mt-4 md:mt-0 bg-slate-800 text-white px-8 py-3 rounded-lg font-bold text-lg hover:bg-red-700 transition-colors shadow-md flex items-center gap-2">
+                    Next Scenario <span class="material-symbols-outlined">skip_next</span>
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <div class="lg:col-span-5 flex flex-col gap-6">
+                    <div class="bg-yellow-50 p-8 rounded-2xl border-2 border-yellow-300 shadow-sm relative">
+                        <div class="absolute -top-3 -right-3 w-8 h-8 bg-red-500 rounded-full flex items-center justify-center text-white font-bold" id="q-counter">1</div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="chip bg-blue-100 text-blue-800" id="quiz-standard">8.F.B.4</span>
+                            <span class="chip bg-green-100 text-green-800">Story → Table → Graph → Rule</span>
+                        </div>
+                        <h3 id="quiz-title" class="font-title text-5xl font-bold mb-4 text-yellow-900">Taxi Fare</h3>
+                        <p id="quiz-story" class="text-xl mb-4 text-slate-800">A taxi ride costs 10 RMB to start, then 5 RMB for each kilometre travelled.</p>
+                        <div class="bg-white p-4 rounded-lg border border-yellow-200 inline-block mb-4">
+                            <p class="text-sm text-slate-500 font-bold uppercase tracking-wider mb-1">Mathematical Model</p>
+                            <p class="font-mono font-bold text-2xl text-red-700" id="quiz-equation">y = 5x + 10</p>
+                        </div>
+                        <div class="grid grid-cols-1 gap-3 text-lg">
+                            <div class="bg-white p-4 rounded-lg border border-yellow-200"><strong>Hint:</strong> <span id="quiz-hint"></span></div>
+                            <div class="bg-white p-4 rounded-lg border border-yellow-200"><strong>Slope meaning:</strong> <span id="quiz-slope-meaning"></span></div>
+                            <div class="bg-white p-4 rounded-lg border border-yellow-200"><strong>Initial value meaning:</strong> <span id="quiz-intercept-meaning"></span></div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-2xl border-2 border-slate-200 shadow-sm">
+                        <h3 class="font-bold text-2xl mb-2">Fill the Data Table</h3>
+                        <p class="text-slate-500 mb-6">Calculate the <strong>y-values</strong>. Use the rule. Then press the button to plot your answers.</p>
+                        <table class="w-full text-left border-collapse mb-6">
+                            <thead>
+                                <tr class="bg-slate-100 text-lg">
+                                    <th class="p-3 border-b-2 border-slate-300" id="table-x-label">Input (x)</th>
+                                    <th class="p-3 border-b-2 border-slate-300" id="table-y-label">Output (y)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="quiz-table-body"></tbody>
+                        </table>
+                        <button onclick="checkAnswers()" class="w-full bg-green-600 text-white font-bold text-xl py-4 rounded-lg hover:bg-green-700 transition shadow-md flex items-center justify-center gap-2">
+                            <span class="material-symbols-outlined">fact_check</span> Check & Plot Answers
+                        </button>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-2xl border-2 border-slate-200 shadow-sm">
+                        <div class="flex items-center justify-between gap-4 mb-4">
+                            <h3 class="font-bold text-2xl">Extra Test Questions</h3>
+                            <button onclick="toggleAnswers()" class="bg-slate-800 text-white px-4 py-2 rounded-lg font-bold hover:bg-red-700 transition">Show / Hide Answers</button>
+                        </div>
+                        <div id="challenge-list" class="space-y-4"></div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 bg-white p-6 rounded-2xl border-2 border-slate-200 shadow-sm h-[700px] lg:h-[920px] flex flex-col">
+                    <h3 class="font-bold text-2xl mb-4 text-center">Coordinate Plane Visualizer</h3>
+                    <div class="flex-grow relative w-full h-full">
+                        <canvas id="mathChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="w-full py-8 text-center text-slate-500 font-hand text-xl mt-12 border-t border-slate-200">
+        <p>© Mr Appels Review Packet | Standard 8.F.A.1 - 8.F.B.5 Mastery</p>
+    </footer>
+
+    <script>
+        function showSection(sectionId) {
+            document.getElementById('sec-home').classList.add('hidden');
+            document.getElementById('sec-knowledge').classList.add('hidden');
+            document.getElementById('sec-practice').classList.add('hidden');
+            document.getElementById('nav-home').classList.remove('nav-active');
+            document.getElementById('nav-knowledge').classList.remove('nav-active');
+            document.getElementById('nav-practice').classList.remove('nav-active');
+            document.getElementById('sec-' + sectionId).classList.remove('hidden');
+            document.getElementById('nav-' + sectionId).classList.add('nav-active');
+            window.scrollTo(0, 0);
+        }
+
+        const questions = [{"title": "Taxi Fare", "story": "A taxi ride costs 10 RMB to start, then 5 RMB for each kilometre travelled.", "equation": "y = 5x + 10", "m": 5, "b": 10, "xValues": [0, 1, 2, 3, 5], "xLabel": "Distance (km)", "yLabel": "Cost (RMB)", "hint": "Start fee = y-intercept. Cost per kilometre = slope.", "meaningSlope": "The cost goes up 5 RMB for every 1 km.", "meaningIntercept": "The ride already costs 10 RMB when the distance is 0 km.", "challenge": [{"q": "What is the initial value?", "a": "10 RMB"}, {"q": "What is the rate of change?", "a": "5 RMB per km"}, {"q": "How far can you travel with 55 RMB?", "a": "9 km because 55 = 5x + 10"}, {"q": "Which is larger at x = 4: y = 5x + 10 or y = 4x + 12?", "a": "y = 5x + 10, because 30 > 28"}]}, {"title": "Swimming Pool", "story": "A swimming pool starts with 20 kL of water and loses water at a constant rate. After 10 hours, it is empty.", "equation": "y = -2x + 20", "m": -2, "b": 20, "xValues": [0, 2, 4, 6, 8, 10], "xLabel": "Time (hours)", "yLabel": "Water (kL)", "hint": "The graph goes down because the pool is losing water.", "meaningSlope": "The pool loses 2 kL every hour.", "meaningIntercept": "The pool starts with 20 kL.", "challenge": [{"q": "What is the slope sign?", "a": "Negative"}, {"q": "How much water is left after 7.5 hours?", "a": "5 kL"}, {"q": "What does the point (10, 0) mean?", "a": "After 10 hours, the pool is empty."}, {"q": "Which drains faster: y = -2x + 20 or y = -3x + 20?", "a": "y = -3x + 20 drains faster because it goes down 3 kL each hour."}]}, {"title": "Pocket Money", "story": "A student starts with -65 RMB after borrowing from parents and then saves 15 RMB each week.", "equation": "y = 15x - 65", "m": 15, "b": -65, "xValues": [0, 1, 2, 3, 4, 5, 6], "xLabel": "Weeks", "yLabel": "Money (RMB)", "hint": "A negative y-intercept means the story starts below 0.", "meaningSlope": "Money increases by 15 RMB each week.", "meaningIntercept": "At week 0, the student is 65 RMB below zero.", "challenge": [{"q": "Is the starting value positive or negative?", "a": "Negative"}, {"q": "When will the student reach 10 RMB?", "a": "5 weeks"}, {"q": "How many weeks to reach 100 RMB?", "a": "11 weeks"}, {"q": "Compare with y = 12x - 20. Which starts higher?", "a": "y = 12x - 20 starts higher because -20 is greater than -65."}]}, {"title": "Beach House: Seas the Day", "story": "This beach house has a deposit and a nightly rate shown by the table pattern 115, 345, 575, 805, 1035.", "equation": "y = 230x + 115", "m": 230, "b": 115, "xValues": [0, 1, 2, 3, 4], "xLabel": "Nights", "yLabel": "Total Cost ($)", "hint": "Find the change in y between rows to get the nightly rate.", "meaningSlope": "The cost increases by $230 per night.", "meaningIntercept": "The deposit is $115.", "challenge": [{"q": "What is the nightly rate?", "a": "$230 per night"}, {"q": "What is the deposit?", "a": "$115"}, {"q": "What is the total cost for 6 nights?", "a": "$1,495"}, {"q": "Compare with y = 100 + 249x. Which has the higher nightly rate?", "a": "y = 100 + 249x has the higher nightly rate because 249 > 230."}]}, {"title": "Shore Thing Rental", "story": "A rental starts at 200 dollars and rises by 200 dollars for every night stayed.", "equation": "y = 200x + 200", "m": 200, "b": 200, "xValues": [0, 1, 2, 3, 4], "xLabel": "Nights", "yLabel": "Total Cost ($)", "hint": "Read the y-intercept first, then count the rise from one point to the next.", "meaningSlope": "The cost rises by $200 each night.", "meaningIntercept": "The deposit is $200.", "challenge": [{"q": "What is the cost for 3 nights?", "a": "$800"}, {"q": "What is the y-intercept?", "a": "200"}, {"q": "Which starts lower: y = 200x + 200 or y = 230x + 115?", "a": "y = 230x + 115 starts lower because 115 < 200."}, {"q": "Which grows faster: y = 200x + 200 or y = 249x + 100?", "a": "y = 249x + 100 grows faster because 249 > 200."}]}, {"title": "Emily's Food Account", "story": "Emily starts with 900 dollars in her food account and spends 50 dollars each week.", "equation": "y = -50x + 900", "m": -50, "b": 900, "xValues": [0, 2, 4, 6, 8, 10, 12], "xLabel": "Weeks", "yLabel": "Amount in Account ($)", "hint": "A falling line means spending or losing.", "meaningSlope": "Emily spends $50 each week.", "meaningIntercept": "Emily starts with $900.", "challenge": [{"q": "How much is left after 12 weeks?", "a": "$300"}, {"q": "How many weeks until one-third of the money is used?", "a": "6 weeks"}, {"q": "How much would her brother spend if he spends 1.5 times as much each week?", "a": "$75 per week"}, {"q": "Which is steeper: y = -50x + 900 or y = -30x + 900?", "a": "y = -50x + 900 is steeper because 50 > 30 in size."}]}, {"title": "Plant Growth", "story": "A plant is 4 cm tall at the start and grows 3 cm each week.", "equation": "y = 3x + 4", "m": 3, "b": 4, "xValues": [0, 1, 2, 3, 4], "xLabel": "Weeks", "yLabel": "Height (cm)", "hint": "Growth means positive slope.", "meaningSlope": "The plant grows 3 cm each week.", "meaningIntercept": "The plant starts at 4 cm.", "challenge": [{"q": "How tall is the plant after 3 weeks?", "a": "13 cm"}, {"q": "Which is greater: slope or y-intercept?", "a": "y-intercept, because 4 > 3"}, {"q": "Which equation matches the same slope but a higher start?", "a": "y = 3x + 6"}, {"q": "Is the point (2, 10) on the line?", "a": "Yes"}]}, {"title": "Fitness Concepts", "story": "Fitness Concepts charges a 20 dollar delivery fee plus 5 dollars per day.", "equation": "y = 5x + 20", "m": 5, "b": 20, "xValues": [0, 2, 4, 6, 8, 10], "xLabel": "Days", "yLabel": "Cost ($)", "hint": "Delivery fee = start. Daily cost = slope.", "meaningSlope": "The hire cost rises by $5 each day.", "meaningIntercept": "The fixed fee is $20.", "challenge": [{"q": "What is the cost after 8 days?", "a": "$60"}, {"q": "What is the fixed fee?", "a": "$20"}, {"q": "Compare with y = 4x. Which is cheaper at day 2?", "a": "y = 4x is cheaper because 8 < 30."}, {"q": "Is the graph increasing or decreasing?", "a": "Increasing"}]}, {"title": "Phone Card", "story": "The Stay in Touch phone card charges 100 cents to connect, then 4 cents for every minute.", "equation": "y = 4x + 100", "m": 4, "b": 100, "xValues": [0, 5, 10, 15, 20, 25, 30], "xLabel": "Minutes", "yLabel": "Cost (cents)", "hint": "A connection fee means the line does not start at 0.", "meaningSlope": "Each extra minute adds 4 cents.", "meaningIntercept": "The connection fee is 100 cents.", "challenge": [{"q": "What is the cost of a 20-minute call?", "a": "180 cents"}, {"q": "What is the cost when time is 0?", "a": "100 cents"}, {"q": "Which has the higher intercept: y = 4x + 100 or y = 6x + 40?", "a": "y = 4x + 100"}, {"q": "How many minutes make the cost 220 cents?", "a": "30 minutes"}]}, {"title": "Road Trip", "story": "Car A is 160 miles away from the destination and drives toward it at 50 miles per hour.", "equation": "y = -50x + 160", "m": -50, "b": 160, "xValues": [0, 1, 2, 3], "xLabel": "Time (hours)", "yLabel": "Distance to Destination (miles)", "hint": "Distance to the finish goes down, so the slope is negative.", "meaningSlope": "The remaining distance drops by 50 miles each hour.", "meaningIntercept": "At the start, the car is 160 miles away.", "challenge": [{"q": "How far away after 2 hours?", "a": "60 miles"}, {"q": "Will the distance ever increase on this graph?", "a": "No"}, {"q": "Which is faster: 50 miles/hour or 37.5 miles in 45 minutes?", "a": "50 miles/hour, because 37.5 in 45 minutes is also 50 mph, so they are equal."}, {"q": "What does the x-intercept mean?", "a": "The car reaches the destination."}]}, {"title": "Ramp Drawing", "story": "On a floor plan, the top of a ramp follows the rule y = 1/2x + 1. The values are in cm on the drawing.", "equation": "y = 0.5x + 1", "m": 0.5, "b": 1, "xValues": [0, 2, 4, 6, 8], "xLabel": "x on drawing (cm)", "yLabel": "y on drawing (cm)", "hint": "A slope of 1/2 means up 1 for every 2 across.", "meaningSlope": "On the drawing, the ramp rises 1 cm for every 2 cm across.", "meaningIntercept": "When x = 0, the ramp starts 1 cm above the bottom edge.", "challenge": [{"q": "What is y when x = 6?", "a": "4 cm"}, {"q": "At scale 1:50, what real height does 4 cm represent?", "a": "200 cm"}, {"q": "Which point is on the line: (4, 3) or (4, 4)?", "a": "(4, 3)"}, {"q": "Is the line linear or non-linear?", "a": "Linear"}]}, {"title": "Basement Temperature", "story": "A basement starts at -6 degrees C and warms by 2 degrees C each hour.", "equation": "y = 2x - 6", "m": 2, "b": -6, "xValues": [0, 2, 4, 6, 8, 10, 12, 15], "xLabel": "Time (hours)", "yLabel": "Temperature (°C)", "hint": "A negative starting value can still rise with a positive slope.", "meaningSlope": "The temperature rises 2°C each hour.", "meaningIntercept": "The basement starts at -6°C.", "challenge": [{"q": "When will the temperature be 24°C?", "a": "15 hours"}, {"q": "What is the temperature after 4 hours?", "a": "2°C"}, {"q": "Is the point (3, 0) on the graph?", "a": "Yes"}, {"q": "Which starts higher: y = 2x - 6 or y = 2x + 1?", "a": "y = 2x + 1"}]}];
+        let currentQuestionIndex = 0;
+        let chartInstance = null;
+        let answersVisible = false;
+
+        function initChart() {
+            const ctx = document.getElementById('mathChart').getContext('2d');
+            const customAxesPlugin = {
+                id: 'customAxes',
+                beforeDraw: (chart) => {
+                    const {ctx, scales: {x, y}} = chart;
+                    ctx.save();
+                    ctx.strokeStyle = '#4e4b4f';
+                    ctx.lineWidth = 2;
+                    if (x.getPixelForValue(0) >= x.left && x.getPixelForValue(0) <= x.right) {
+                        ctx.beginPath();
+                        ctx.moveTo(x.getPixelForValue(0), y.top);
+                        ctx.lineTo(x.getPixelForValue(0), y.bottom);
+                        ctx.stroke();
+                    }
+                    if (y.getPixelForValue(0) >= y.top && y.getPixelForValue(0) <= y.bottom) {
+                        ctx.beginPath();
+                        ctx.moveTo(x.left, y.getPixelForValue(0));
+                        ctx.lineTo(x.right, y.getPixelForValue(0));
+                        ctx.stroke();
+                    }
+                    ctx.restore();
+                }
+            };
+
+            chartInstance = new Chart(ctx, {
+                type: 'scatter',
+                plugins: [customAxesPlugin],
+                data: {
+                    datasets: [
+                        {
+                            label: 'Your plotted points',
+                            data: [],
+                            backgroundColor: '#b4271d',
+                            borderColor: '#811c15',
+                            pointRadius: 8,
+                            pointHoverRadius: 10,
+                            showLine: false,
+                            order: 1
+                        },
+                        {
+                            label: 'True mathematical model',
+                            data: [],
+                            borderColor: 'rgba(37, 90, 64, 0.35)',
+                            borderWidth: 3,
+                            borderDash: [10, 10],
+                            showLine: true,
+                            pointRadius: 0,
+                            fill: false,
+                            order: 2
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: { title: { display: true, text: 'Input (x axis)', font: {size: 18, weight: 'bold'} }, grid: { color: '#e2e8f0' } },
+                        y: { title: { display: true, text: 'Output (y axis)', font: {size: 18, weight: 'bold'} }, grid: { color: '#e2e8f0' } }
+                    },
+                    animation: { duration: 600, easing: 'easeOutQuart' },
+                    plugins: { legend: { labels: { font: {size: 14, family: "'Be Vietnam Pro', sans-serif" } } } }
+                }
+            });
+        }
+
+        function loadQuestion() {
+            const q = questions[currentQuestionIndex];
+            document.getElementById('q-counter').innerText = currentQuestionIndex + 1;
+            document.getElementById('quiz-title').innerText = q.title;
+            document.getElementById('quiz-story').innerText = q.story;
+            document.getElementById('quiz-equation').innerText = q.equation;
+            document.getElementById('quiz-hint').innerText = q.hint;
+            document.getElementById('quiz-slope-meaning').innerText = q.meaningSlope;
+            document.getElementById('quiz-intercept-meaning').innerText = q.meaningIntercept;
+            document.getElementById('table-x-label').innerText = q.xLabel;
+            document.getElementById('table-y-label').innerText = q.yLabel;
+
+            const tbody = document.getElementById('quiz-table-body');
+            tbody.innerHTML = '';
+            q.xValues.forEach((x, index) => {
+                tbody.innerHTML += `
+                    <tr class="hover:bg-slate-50 transition-colors">
+                        <td class="p-4 border-b border-slate-200 font-bold text-xl text-center text-blue-800">${x}</td>
+                        <td class="p-3 border-b border-slate-200">
+                            <input type="number" step="any" id="input-y-${index}" data-x="${x}"
+                                class="w-full p-3 border-2 border-slate-300 rounded-lg text-lg font-bold focus:ring focus:ring-blue-200 focus:border-blue-500 outline-none transition-all"
+                                placeholder="Type answer here..."
+                                onkeypress="handleEnter(event)">
+                        </td>
+                    </tr>
+                `;
+            });
+
+            renderChallenges(q.challenge);
+
+            const minX = Math.min(...q.xValues) - 1;
+            const maxX = Math.max(...q.xValues) + 1;
+            const targetData = [
+                { x: minX, y: (q.m * minX) + q.b },
+                { x: maxX, y: (q.m * maxX) + q.b }
+            ];
+            chartInstance.data.datasets[1].data = targetData;
+            chartInstance.data.datasets[0].data = [];
+
+            const allY = q.xValues.map(x => (q.m * x) + q.b);
+            const minY = Math.min(...allY, 0);
+            const maxY = Math.max(...allY, 0);
+            const yPad = Math.max(4, Math.ceil((maxY - minY) * 0.15));
+            chartInstance.options.scales.x.min = minX;
+            chartInstance.options.scales.x.max = maxX;
+            chartInstance.options.scales.x.title.text = q.xLabel;
+            chartInstance.options.scales.y.title.text = q.yLabel;
+            chartInstance.options.scales.y.min = Math.floor(minY - yPad);
+            chartInstance.options.scales.y.max = Math.ceil(maxY + yPad);
+            chartInstance.update();
+        }
+
+        function renderChallenges(challengeItems) {
+            const container = document.getElementById('challenge-list');
+            container.innerHTML = '';
+            challengeItems.forEach((item, idx) => {
+                container.innerHTML += `
+                    <div class="border border-slate-200 rounded-xl p-4 bg-slate-50">
+                        <p class="font-bold text-slate-700 mb-2">Question ${idx + 1}</p>
+                        <p class="text-lg">${item.q}</p>
+                        <p class="mt-3 text-green-700 font-bold ${answersVisible ? '' : 'answer-hide'}">Answer: ${item.a}</p>
+                    </div>
+                `;
+            });
+        }
+
+        function toggleAnswers() {
+            answersVisible = !answersVisible;
+            renderChallenges(questions[currentQuestionIndex].challenge);
+        }
+
+        function handleEnter(e) {
+            if (e.key === 'Enter') checkAnswers();
+        }
+
+        function checkAnswers() {
+            const q = questions[currentQuestionIndex];
+            const userPoints = [];
+            let allFilled = true;
+            q.xValues.forEach((x, index) => {
+                const inputEl = document.getElementById(`input-y-${index}`);
+                const userVal = parseFloat(inputEl.value);
+                const correctVal = (q.m * x) + q.b;
+                if (isNaN(userVal)) {
+                    allFilled = false;
+                    return;
+                }
+                userPoints.push({ x: x, y: userVal });
+                if (Math.abs(userVal - correctVal) < 0.000001) {
+                    inputEl.classList.remove('bg-red-50', 'border-red-400', 'text-red-700');
+                    inputEl.classList.add('bg-green-50', 'border-green-500', 'text-green-800');
+                } else {
+                    inputEl.classList.remove('bg-green-50', 'border-green-500', 'text-green-800');
+                    inputEl.classList.add('bg-red-50', 'border-red-400', 'text-red-700');
+                }
+            });
+            chartInstance.data.datasets[0].data = userPoints;
+            chartInstance.update();
+            const allCorrect = userPoints.length === q.xValues.length && userPoints.every(p => Math.abs(p.y - ((q.m * p.x) + q.b)) < 0.000001);
+            if (allCorrect && allFilled) {
+                setTimeout(() => {
+                    alert('🎉 Excellent. Your table matches the rule, and the plotted points sit on the line.');
+                }, 300);
+            }
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex = (currentQuestionIndex + 1) % questions.length;
+            loadQuestion();
+        }
+
+        window.onload = () => {
+            initChart();
+            loadQuestion();
+        };
+    </script>
+</body>
+</html>
