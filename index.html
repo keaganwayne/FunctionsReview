@@ -38,6 +38,42 @@
       transform: translateY(-3px);
       box-shadow: 0 18px 36px rgba(15, 23, 42, .12);
     }
+    .lesson-card {
+      overflow: hidden;
+    }
+    .accordion-trigger {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      padding: 0;
+      text-align: left;
+      color: inherit;
+      cursor: pointer;
+    }
+    .accordion-trigger:focus-visible {
+      outline: 3px solid #93c5fd;
+      outline-offset: 4px;
+      border-radius: 14px;
+    }
+    .accordion-chevron {
+      transition: transform .18s ease;
+      transform: rotate(0deg);
+    }
+    .accordion-trigger[aria-expanded="true"] .accordion-chevron {
+      transform: rotate(90deg);
+    }
+    .accordion-body {
+      height: 0;
+      overflow: hidden;
+      transition: height .18s ease;
+    }
+    .accordion-inner {
+      padding: 0 0 1.25rem;
+    }
+    .lesson-card.is-open {
+      border-color: #f59e0b;
+      box-shadow: 0 18px 36px rgba(15, 23, 42, .12);
+    }
     .pill { border: 1px solid #cbd5e1; border-radius: 999px; padding: .35rem .75rem; font-weight: 800; font-size: .78rem; background: #fff; }
     .calc-wrap { position: relative; border: 1px solid #cbd5e1; border-radius: 10px; overflow: hidden; background: white; }
     .calc { width: 100%; height: 440px; min-height: 360px; }
@@ -123,6 +159,11 @@
       .practice-calc { height: 300px; }
       .graph-note { font-size: .72rem; max-width: 160px; }
     }
+    @media (prefers-reduced-motion: reduce) {
+      .topic-card, .lesson-card, .practice-shell, .accordion-chevron, .accordion-body {
+        transition: none !important;
+      }
+    }
   </style>
 </head>
 <body class="min-h-screen">
@@ -170,7 +211,7 @@
         <button onclick="selectTopic('geometry')" class="topic-card paper rounded-xl p-6 text-left border-green-200">
           <span class="material-symbols-outlined text-6xl text-green-700">architecture</span>
           <h2 class="font-title text-5xl font-bold">Geometry</h2>
-          <p class="text-slate-600">Scale drawings, circle area and circumference, missing angles, and triangle conditions.</p>
+          <p class="text-slate-600">Scale drawings, translations, reflections, rotations, circle formulas, missing angles, and triangle conditions.</p>
         </button>
         <button onclick="selectTopic('statistics')" class="topic-card paper rounded-xl p-6 text-left border-amber-200">
           <span class="material-symbols-outlined text-6xl text-amber-700">query_stats</span>
@@ -318,13 +359,13 @@
       },
       geometry: {
         title: "Geometry",
-        subtitle: "Use scale factors, circle formulas, angle relationships, and triangle conditions in multi-step problems.",
-        source: "Built from the final standards, Spectrum Grade 7 geometry pages around 86-95, and Big Fat Notebook review of ratios, proportions, and equations.",
+        subtitle: "Use scale factors, transformations, circle formulas, angle relationships, and triangle conditions in multi-step problems.",
+        source: "Built from the final standards, Spectrum Grade 7 geometry pages around 86-95, Grade 8 transformation skills, and Big Fat Notebook review of ratios, proportions, and equations.",
         help: "几何复习重点: 比例图用比例因子, 圆要记住半径/直径/周长/面积, 角度关系经常需要写方程。",
-        standards: ["7.G.A.1", "7.G.A.2", "7.G.A.3", "7.G.B.4", "7.G.B.5"],
-        desmosCaption: "This graph uses a true 1:1 scale. The circle stays circular, not stretched into an ellipse.",
+        standards: ["7.G.A.1", "7.G.A.2", "7.G.A.3", "7.G.B.4", "7.G.B.5", "8.G.A.1", "8.G.A.2", "8.G.A.3"],
+        desmosCaption: "This graph uses a true 1:1 scale so you can study circles and transformations without distortion.",
         graphNotes: {
-          points: "Radius: center to edge. Diameter is twice as long.",
+          points: "Transformations move figures: translate slides, reflect flips, rotate turns.",
           line: "Circle: x^2 + y^2 = r^2. Here r = 4."
         },
         bounds: { centerX: 0, centerY: 0, ySpan: 10 },
@@ -473,9 +514,26 @@
       ]
     };
 
+    topicData.geometry.help = "几何复习重点: 比例图用比例因子, 平移/旋转/翻折要看图形怎么移动, 圆要记住半径/直径/周长/面积, 角度关系常常需要列方程。";
+    topicData.geometry.lessons.splice(
+      5,
+      0,
+      ["sync_alt", "Translations", "A translation slides a figure without turning or flipping it. Every point moves the same distance in the same direction, so side lengths and angle measures stay the same.", "If every point moves right 4 and up 2, (1,3) becomes (5,5).", "平移是不旋转不翻折地滑动图形。每个点移动同样的距离和方向。"],
+      ["flip", "Reflections", "A reflection flips a figure across a line like a mirror. Points stay the same distance from the line of reflection, but on opposite sides.", "Reflecting (3,1) across the y-axis gives (-3,1).", "翻折像照镜子。点到对称轴的距离相同, 只是到了另一边。"],
+      ["refresh", "Rotations", "A rotation turns a figure around a center point. In coordinate grids, a 90 degree turn around the origin follows a pattern such as (x, y) to (-y, x) for counterclockwise rotation.", "Rotating (2,1) 90 degrees counterclockwise around the origin gives (-1,2).", "旋转是围绕一个中心点转动图形。90度逆时针常见规则是 (x, y) 变成 (-y, x)。"]
+    );
+    questionBank.geometry.splice(
+      6,
+      0,
+      q("geometry","8.G.A.1","Translation Rule","Point A is at (2, 5). Translate it right 3 and down 2. What is the image of A?","(5,3)","Add 3 to x and subtract 2 from y: (2,5) becomes (5,3).","平移: 向右 x 加, 向下 y 减。"),
+      q("geometry","8.G.A.1","Reflection Across y-Axis","Reflect point (4, -1) across the y-axis. What is the image?","(-4,-1)","A reflection across the y-axis changes the sign of x only.","关于 y 轴翻折时, x 变号, y 不变。"),
+      q("geometry","8.G.A.1","Rotation 90 Degrees","Rotate point (3, 2) 90 degrees counterclockwise around the origin. What is the image?","(-2,3)","For a 90 degree counterclockwise rotation, (x, y) becomes (-y, x).","90度逆时针: (x, y) 变成 (-y, x)。")
+    );
+
     let currentTopic = "functions";
     let questionIndex = 0;
     let selectedChoice = "";
+    let openLessonId = null;
     let calculator;
     let practiceCalculator;
 
@@ -488,6 +546,7 @@
       currentTopic = key;
       questionIndex = 0;
       selectedChoice = "";
+      openLessonId = null;
       const topic = topicData[key];
       document.getElementById("home").classList.add("hidden");
       document.getElementById("topic").classList.remove("hidden");
@@ -499,22 +558,36 @@
       setNote("note-points", "scatter_plot", topic.graphNotes.points);
       setNote("note-line", "timeline", topic.graphNotes.line);
       document.getElementById("standard-list").innerHTML = topic.standards.map(s => `<span class="pill">${s}</span>`).join("");
-      document.getElementById("lesson-grid").innerHTML = topic.lessons.map(([icon,title,body,example,help]) => `
-        <article class="lesson-card border border-slate-200 rounded-xl p-5 bg-white relative">
-          <div class="flex items-start justify-between gap-3">
-            <div class="flex items-center gap-3">
-              <span class="material-symbols-outlined text-4xl text-red-700">${icon}</span>
-              <h3 class="text-2xl font-extrabold">${title}</h3>
+      document.getElementById("lesson-grid").innerHTML = topic.lessons.map(([icon,title,body,example,help], index) => {
+        const lessonId = `${key}-lesson-${index}`;
+        const bodyId = `${lessonId}-body`;
+        return `
+          <article class="lesson-card border border-slate-200 rounded-xl px-5 pt-5 bg-white relative" data-lesson-id="${lessonId}">
+            <button class="accordion-trigger" type="button" aria-expanded="false" aria-controls="${bodyId}" onclick="toggleLesson('${lessonId}')">
+              <div class="flex items-start justify-between gap-3">
+                <div class="flex items-center gap-3">
+                  <span class="material-symbols-outlined text-4xl text-red-700">${icon}</span>
+                  <h3 class="text-2xl font-extrabold">${title}</h3>
+                </div>
+                <div class="flex items-center gap-3">
+                  <div class="help-wrap relative">
+                    <span class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-yellow-200 border border-yellow-500 font-black" aria-hidden="true">?</span>
+                    <div class="help-pop absolute right-0 top-11 w-72 bg-white border-2 border-yellow-400 rounded-lg p-4 shadow-xl text-sm z-20">${help}</div>
+                  </div>
+                  <span class="material-symbols-outlined text-slate-500 accordion-chevron" aria-hidden="true">chevron_right</span>
+                </div>
+              </div>
+            </button>
+            <div id="${bodyId}" class="accordion-body" aria-hidden="true">
+              <div class="accordion-inner">
+                <p class="mt-4 text-slate-700">${body}</p>
+                <p class="mt-4 bg-slate-50 border border-slate-200 rounded-lg p-4 font-bold">${example}</p>
+              </div>
             </div>
-            <div class="help-wrap relative">
-              <button class="w-9 h-9 rounded-full bg-yellow-200 border border-yellow-500 font-black" aria-label="Chinese help">?</button>
-              <div class="help-pop absolute right-0 top-11 w-72 bg-white border-2 border-yellow-400 rounded-lg p-4 shadow-xl text-sm z-20">${help}</div>
-            </div>
-          </div>
-          <p class="mt-4 text-slate-700">${body}</p>
-          <p class="mt-4 bg-slate-50 border border-slate-200 rounded-lg p-4 font-bold">${example}</p>
-        </article>
-      `).join("");
+          </article>
+        `;
+      }).join("");
+      syncAccordionHeights();
       loadDesmos();
       loadQuestion();
       updateStats();
@@ -523,6 +596,25 @@
 
     function setNote(id, icon, text) {
       document.getElementById(id).innerHTML = `<span class="note-label"><span class="material-symbols-outlined note-icon">${icon}</span><span class="note-text">${text}</span></span>`;
+    }
+
+    function toggleLesson(id) {
+      openLessonId = openLessonId === id ? null : id;
+      syncAccordionHeights();
+    }
+
+    function syncAccordionHeights() {
+      document.querySelectorAll("#lesson-grid .lesson-card").forEach(card => {
+        const lessonId = card.dataset.lessonId;
+        const button = card.querySelector(".accordion-trigger");
+        const body = card.querySelector(".accordion-body");
+        const inner = card.querySelector(".accordion-inner");
+        const expanded = lessonId === openLessonId;
+        button.setAttribute("aria-expanded", expanded ? "true" : "false");
+        body.setAttribute("aria-hidden", expanded ? "false" : "true");
+        body.style.height = expanded ? `${inner.scrollHeight}px` : "0px";
+        card.classList.toggle("is-open", expanded);
+      });
     }
 
     function graphpaperRect(elt) {
@@ -649,12 +741,25 @@
         input.classList.toggle("answer-bad", !ok);
       }
       const feedback = document.getElementById("answer-feedback");
-      feedback.textContent = ok ? "Correct. Streak grows." : "Not yet. Review the hint and try again.";
-      feedback.className = ok ? "mt-4 font-bold text-lg min-h-7 text-green-700" : "mt-4 font-bold text-lg min-h-7 text-red-700";
       const p = getProgress();
-      p.current = ok ? p.current + 1 : 0;
-      p.best = Math.max(p.best, p.current);
-      p.results[questionIndex] = ok;
+      const previous = p.results[questionIndex];
+      const firstCorrect = ok && previous !== true;
+      feedback.textContent = ok
+        ? firstCorrect
+          ? "Correct. Streak grows."
+          : "Already counted. Nice job remembering it."
+        : "Not yet. Review the hint and try again.";
+      feedback.className = ok ? "mt-4 font-bold text-lg min-h-7 text-green-700" : "mt-4 font-bold text-lg min-h-7 text-red-700";
+      if (ok) {
+        if (previous !== true) {
+          p.current += 1;
+          p.best = Math.max(p.best, p.current);
+        }
+        p.results[questionIndex] = true;
+      } else {
+        p.current = 0;
+        p.results[questionIndex] = false;
+      }
       saveProgress(p);
       updateStats();
     }
@@ -713,6 +818,7 @@
 
     window.addEventListener("resize", () => {
       setSquareBounds();
+      syncAccordionHeights();
       if (practiceCalculator) setSquareBounds(practiceCalculator, "practice-calculator", questionBank[currentTopic][questionIndex].graph?.bounds || topicData[currentTopic].bounds);
     });
     window.addEventListener("load", () => {
